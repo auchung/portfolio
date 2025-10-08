@@ -90,3 +90,10 @@ form label {
   grid-template-columns: subgrid; /* inherit parent grid columns */
   grid-column: 1 / -1;            /* span full row */
 }
+
+.projects {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(15em, 1fr));
+  gap: 1.5em; /* spacing between articles */
+  margin-top: 2em; /* space from heading */
+}
