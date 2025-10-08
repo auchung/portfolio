@@ -97,3 +97,32 @@ form label {
   gap: 1.5em; /* spacing between articles */
   margin-top: 2em; /* space from heading */
 }
+
+.projects article {
+  display: grid;
+  grid-template-rows: subgrid; /* inherit row sizing from parent grid */
+  grid-row: span 3;            /* span 3 rows */
+  gap: 1em;                     /* spacing between heading, image, and paragraph */
+}
+
+.projects article h2 {
+  margin: 0;                    /* remove extra spacing from headings */
+}
+
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1.1;        /* tighter line spacing than body text */
+  text-wrap: balance;       /* balances text across lines nicely */
+  margin: 0;                /* remove default margins for more control */
+}
+
+/* Specific styling for the main page title */
+.projects h1 {
+  font-size: 4em;           /* makes the main heading much larger than h2 */
+  margin-bottom: 0.5em;     /* space below the heading */
+}
+
+/* Project article headings */
+.projects h2 {
+  font-size: 1.5em;         /* smaller than h1 but still prominent */
+  margin-bottom: 0.5em;     /* space below each project title */
+}
