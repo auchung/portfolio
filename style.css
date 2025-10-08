@@ -53,31 +53,25 @@ body {
     font: inherit;  /* makes form controls use the same font as the page */
   }
 
-/* Make labels and form controls behave like block elements */
-form label,
-form input,
-form textarea,
-form button {
-  display: block;
-  font: inherit; /* keep typography consistent */
-}
 
-/* Make inputs and textarea fill the width of the form */
 form input,
 form textarea {
-  width: 100%;
-  box-sizing: border-box; /* includes padding and border in width */
-  padding: 0.5em;         /* adds some inner spacing */
-  margin-bottom: 1em;     /* space after each input */
+  padding: 0.5em;
+  width: 100%;           /* ensures input fills the second column */
+  box-sizing: border-box; /* includes padding in width */
+  font: inherit;          /* matches the page font */
 }
 
-/* Add spacing around labels */
-form label {
-  margin-block: 0.5em; /* space before and after label */
+form {
+  display: grid;
+  grid-template-columns: max-content 1fr; /* two columns: labels & inputs */
+  gap: 0.5em 1em; /* row-gap then column-gap */
+  align-items: center; /* vertically centers inputs with their labels */
 }
 
-/* Style the submit button */
 form button {
+  grid-column: 1 / -1; /* spans both columns */
   padding: 0.5em 1em;
   cursor: pointer;
+  font: inherit;
 }
