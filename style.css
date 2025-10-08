@@ -53,7 +53,6 @@ body {
     font: inherit;  /* makes form controls use the same font as the page */
   }
 
-
 form input,
 form textarea {
   padding: 0.5em;
@@ -74,4 +73,20 @@ form button {
   padding: 0.5em 1em;
   cursor: pointer;
   font: inherit;
+}
+
+form label {
+  display: contents; /* removes the label box so its text and input participate in the grid directly */
+}
+
+form {
+  display: grid;
+  grid-template-columns: auto 1fr; /* first column auto for label text, second column 1fr for input */
+  gap: 1em;                        /* spacing between rows and columns */
+}
+
+form label {
+  display: grid;
+  grid-template-columns: subgrid; /* inherit parent grid columns */
+  grid-column: 1 / -1;            /* span full row */
 }
