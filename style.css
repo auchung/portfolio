@@ -30,21 +30,27 @@ body {
   }
 
   nav a {
-    flex: 1;                  /* all links take equal space */
-    text-align: center;        /* center text inside each link */
-    padding: 0.5em;       /* vertical padding for height */
+    flex: 1;
     text-decoration: none;
     color: inherit;
-    display: block;            /* ensures flex:1 works properly */
+    text-align: center;
+    padding: 0.5em; 
+    display: block; 
     border-bottom: 0.4em solid transparent;
   }
   
   nav a.current {
-    border-bottom-color: oklch(80% 3% 200);
+    border-bottom-color: 0.4em solid oklch(80% 3% 200);
     padding-bottom: 0.3em;
   }
   
   nav a:hover {
     border-bottom-color: var(--color-accent);
     background-color: oklch(from var(--color-accent)95% 5% h);    /* hover effect */
+  }
+
+  input,
+  textarea,
+  button {
+    font: inherit;  /* makes form controls use the same font as the page */
   }
