@@ -4,6 +4,5 @@ body {
        */
     font: 100%/1.5 system-ui;
     max-width: 100ch;
-    background-color: pink;
-    /*margin-inline: auto; /* centers the content */
+    margin-inline: auto; /* centers the content */
   }
