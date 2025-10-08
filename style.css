@@ -126,3 +126,83 @@ h1, h2, h3, h4, h5, h6 {
   font-size: 1.5em;         /* smaller than h1 but still prominent */
   margin-bottom: 0.5em;     /* space below each project title */
 }
+
+/* ===== Headings ===== */
+h1 {
+  font-size: 3em;
+  margin-bottom: 0.5em;
+  text-align: center;
+}
+
+h2 {
+  font-size: 1.8em;
+  margin-top: 2em;
+  margin-bottom: 0.5em;
+  border-bottom: 2px solid #ccc;
+  padding-bottom: 0.25em;
+}
+
+h3 {
+  font-size: 1.2em;
+  margin-top: 1em;
+  margin-bottom: 0.25em;
+}
+
+h4 {
+  font-weight: normal;
+  margin-top: 0.25em;
+  margin-bottom: 0.25em;
+  font-size: 1em;
+  color: #555;
+}
+
+/* ===== Sections & Articles ===== */
+section {
+  margin-bottom: 2em;
+}
+
+article {
+  margin-bottom: 1.5em;
+}
+
+/* ===== Lists ===== */
+ul {
+  list-style: disc inside;
+  padding-left: 1em;
+  margin-top: 0.5em;
+}
+
+/* ===== Dates ===== */
+time {
+  font-style: italic;
+  color: #555;
+}
+
+/* ===== Links ===== */
+a {
+  color: #1a73e8; /* subtle blue accent */
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* ===== Navigation (reuse your existing nav styling if needed) ===== */
+nav {
+  margin-bottom: 2em;
+}
+
+/* ===== Optional: Skills formatting ===== */
+.skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5em;
+}
+
+.skills span {
+  background-color: #eee;
+  padding: 0.25em 0.5em;
+  border-radius: 0.25em;
+  font-size: 0.9em;
+}
