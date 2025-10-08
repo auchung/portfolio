@@ -40,7 +40,7 @@ body {
   }
   
   nav a.current {
-    border-bottom-color: 0.4em solid oklch(80% 3% 200);
+    border-bottom: 0.4em solid oklch(80% 3% 200);
     padding-bottom: 0.3em;
   }
   
