@@ -49,8 +49,35 @@ body {
     background-color: oklch(from var(--color-accent)95% 5% h);    /* hover effect */
   }
 
-  input,
-  textarea,
-  button {
+  input, textarea, button {
     font: inherit;  /* makes form controls use the same font as the page */
   }
+
+/* Make labels and form controls behave like block elements */
+form label,
+form input,
+form textarea,
+form button {
+  display: block;
+  font: inherit; /* keep typography consistent */
+}
+
+/* Make inputs and textarea fill the width of the form */
+form input,
+form textarea {
+  width: 100%;
+  box-sizing: border-box; /* includes padding and border in width */
+  padding: 0.5em;         /* adds some inner spacing */
+  margin-bottom: 1em;     /* space after each input */
+}
+
+/* Add spacing around labels */
+form label {
+  margin-block: 0.5em; /* space before and after label */
+}
+
+/* Style the submit button */
+form button {
+  padding: 0.5em 1em;
+  cursor: pointer;
+}
