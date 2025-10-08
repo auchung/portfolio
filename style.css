@@ -14,3 +14,28 @@ body {
     margin: 0;         /* optional: remove any margin just in case */
     padding: 0;        /* optional: remove default padding */
   }
+
+  nav {
+    display: flex;          /* activates Flexbox layout */
+    background-color: #f4f4f4;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  nav a {
+    flex: 1;                  /* all links take equal space */
+    text-align: center;        /* center text inside each link */
+    padding: 0.75rem 0;       /* vertical padding for height */
+    text-decoration: none;
+    color: black;
+    display: block;            /* ensures flex:1 works properly */
+  }
+  
+  nav a.current {
+    background-color: #ddd;    /* highlight current page */
+    font-weight: bold;
+  }
+  
+  nav a:hover {
+    background-color: #ccc;    /* hover effect */
+  }
