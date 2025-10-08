@@ -7,3 +7,10 @@ body {
     margin-inline: auto; /* centers the content */
     padding: 2em;
   }
+
+  nav ul,
+  nav li {
+    display: contents; /* ignore the default list styling */
+    margin: 0;         /* optional: remove any margin just in case */
+    padding: 0;        /* optional: remove default padding */
+  }
