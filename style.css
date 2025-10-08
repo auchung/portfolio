@@ -1,3 +1,11 @@
+:root {
+  --color-accent: oklch(65% 50% 0); /* pick your own accent if you want */
+}
+
+html {
+  accent-color: var(--color-accent);
+}
+
 body {
     /* Set line height to 1.5 times the font size
          and use the OS’s UI font as the website font
