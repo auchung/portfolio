@@ -53,43 +53,31 @@ body {
     font: inherit;  /* makes form controls use the same font as the page */
   }
 
-form input,
-form textarea {
-  padding: 0.5em;
-  width: 100%;           /* ensures input fills the second column */
-  box-sizing: border-box; /* includes padding in width */
-  font: inherit;          /* matches the page font */
-}
-
-form {
-  display: grid;
-  grid-template-columns: max-content 1fr; /* two columns: labels & inputs */
-  gap: 0.5em 1em; /* row-gap then column-gap */
-  align-items: center; /* vertically centers inputs with their labels */
-}
-
-form button {
-  grid-column: 1 / -1; /* spans both columns */
-  padding: 0.5em 1em;
-  cursor: pointer;
-  font: inherit;
-}
-
-form label {
-  display: contents; /* removes the label box so its text and input participate in the grid directly */
-}
-
-form {
-  display: grid;
-  grid-template-columns: auto 1fr; /* first column auto for label text, second column 1fr for input */
-  gap: 1em;                        /* spacing between rows and columns */
-}
-
-form label {
-  display: grid;
-  grid-template-columns: subgrid; /* inherit parent grid columns */
-  grid-column: 1 / -1;            /* span full row */
-}
+  form {
+    display: grid;
+    grid-template-columns: max-content 1fr; /* labels + inputs */
+    gap: 0.5em 1em; /* vertical + horizontal spacing */
+    align-items: center; /* align labels and inputs nicely */
+  }
+  
+  form label {
+    justify-self: end; /* aligns labels to the right side */
+  }
+  
+  form input,
+  form textarea {
+    padding: 0.5em;
+    width: 100%;           /* makes inputs fill the column */
+    box-sizing: border-box; /* includes padding in width */
+    font: inherit;          /* keeps consistent font style */
+  }
+  
+  form button {
+    grid-column: 1 / -1; /* makes button span both columns */
+    padding: 0.5em 1em;
+    cursor: pointer;
+    font: inherit;
+  }
 
 .projects {
   display: grid;
