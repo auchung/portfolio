@@ -15,7 +15,7 @@
     header {
       display: flex;
       align-items: center;
-      justify-content: space-between;
+      gap: 0.5em;
       cursor: pointer;
     }
 
@@ -60,8 +60,8 @@
 
   <section>
     <header>
-      <h2>Education</h2>
       <button class="toggle-btn">▶</button>
+      <h2>Education</h2>
     </header>
     <div class="content">
       <article>
@@ -77,8 +77,8 @@
 
   <section>
     <header>
-      <h2>Work Experience</h2>
       <button class="toggle-btn">▶</button>
+      <h2>Work Experience</h2>
     </header>
     <div class="content">
       <article>
@@ -116,8 +116,8 @@
 
   <section>
     <header>
-      <h2>Leadership & Volunteer Experience</h2>
       <button class="toggle-btn">▶</button>
+      <h2>Leadership & Volunteer Experience</h2>
     </header>
     <div class="content">
       <article>
@@ -133,8 +133,8 @@
 
   <section>
     <header>
-      <h2>Skills</h2>
       <button class="toggle-btn">▶</button>
+      <h2>Skills</h2>
     </header>
     <div class="content">
       <p><strong>Technical Skills:</strong> Python (pandas, numpy, scikit-learn), SQL, Machine Learning, Data Visualization, Java, HTML, GitHub, Excel</p>
@@ -145,74 +145,13 @@
   <script>
     const toggles = document.querySelectorAll('.toggle-btn');
     toggles.forEach(btn => {
-      btn.addEventListener('click', () => {
+      btn.addEventListener('click', (event) => {
+        event.stopPropagation();
         const content = btn.parentElement.nextElementSibling;
         content.classList.toggle('show');
         btn.classList.toggle('rotate');
       });
     });
   </script>
-    
-  <!--<section>
-    <header><h2>Education</h2></header>
-    <article>
-      <h3>University of California, San Diego</h3>
-      <h4>Halıcıoğlu Data Science Institute</h4>
-      <p>Candidate for Bachelor of Science in Data Science, Minor in Cognitive Science</p>
-      <p>La Jolla, CA</p>
-      <time datetime="2027-06">June 2027</time>
-      <p>GPA: 3.94</p>
-    </article>
-  </section>
-
-  <section>
-    <header><h2>Work Experience</h2></header>
-    <article>
-      <h3>Academic Integrity Office, UCSD</h3>
-      <h4>Peer Mentor</h4>
-      <time datetime="2024-04">April 2024</time> – Present
-      <ul>
-        <li>Facilitates small group discussions to help students understand and internalize learning objectives</li>
-        <li>Provides constructive feedback during workshops and on assignments</li>
-        <li>Maintains consistent communication with students and Education Coordinators</li>
-      </ul>
-    </article>
-    <article>
-      <h3>Private Tutoring</h3>
-      <h4>Mathematics Tutor (Remote)</h4>
-      <time datetime="2023-08">August 2023</time> – Present
-      <ul>
-        <li>Provides one-on-one math tutoring and improves student performance</li>
-        <li>Builds strong relationships with students and parents</li>
-      </ul>
-    </article>
-    <article>
-      <h3>StudentNest</h3>
-      <h4>Academic Tutor</h4>
-      <time datetime="2024-07">July 2024</time> – <time datetime="2024-08">August 2024</time>
-      <ul>
-        <li>Tutored high school subjects, specializing in advanced math</li>
-        <li>Adapted teaching strategies for diverse learners</li>
-      </ul>
-    </article>
-  </section>
-
-  <section>
-    <header><h2>Leadership & Volunteer Experience</h2></header>
-    <article>
-      <h3>PAWS Club</h3>
-      <time datetime="2021-09">September 2021</time> – <time datetime="2023-06">June 2023</time>
-      <ul>
-        <li>Led volunteering opportunities for 75+ high school students</li>
-        <li>Raised $2000+ for non-profit animal organizations by organizing a bake sale</li>
-      </ul>
-    </article>
-  </section>
-
-  <section>
-    <header><h2>Skills</h2></header>
-    <p><strong>Technical Skills:</strong> Python (pandas, numpy, scikit-learn), SQL, Machine Learning, Data Visualization, Java, HTML, GitHub, Excel</p>
-    <p><strong>Languages:</strong> English (Native), Cantonese (Proficient), French (Basic)</p>
-  </section>-->
 </body>
 </html>
