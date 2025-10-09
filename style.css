@@ -73,7 +73,7 @@ body {
   form textarea {
     padding: 0.5em;
     width: 100%;
-    max-width: 400px; /* ✅ makes boxes thinner */
+    max-height: fit-content;
     box-sizing: border-box;
     font: inherit;        /* keeps consistent font style */
   }
