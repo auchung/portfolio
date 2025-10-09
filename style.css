@@ -14,6 +14,7 @@ body {
     max-width: 100ch;
     margin-inline: auto; /* centers the content */
     padding: 2em;
+    text-align: center;
   }
 
   nav ul,
