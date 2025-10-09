@@ -11,9 +11,10 @@ body {
          and use the OS’s UI font as the website font
        */
     font: 100%/1.5 system-ui;
-    max-width: 100ch;
+    max-width: 80ch;
     margin-inline: auto; /* centers the content */
     padding: 2em;
+    font: 100%/1.5 system-ui;
   }
 
   nav ul,
@@ -147,6 +148,7 @@ h4 {
 /* ===== Sections & Articles ===== */
 section {
   margin-bottom: 2em;
+  max-width: 100%;       /* ensures sections fit inside the body */
 }
 
 article {
