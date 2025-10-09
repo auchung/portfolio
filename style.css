@@ -17,6 +17,8 @@ body {
     font: 100%/1.5 system-ui;
   }
 
+  
+/* NAV LINKS */
   nav ul,
   nav li {
     display: contents; /* ignore the default list styling */
@@ -54,6 +56,8 @@ body {
     font: inherit;  /* makes form controls use the same font as the page */
   }
 
+
+  /* CONTACT FORM */
   form {
     display: grid;
     grid-template-columns: max-content 1fr; /* labels + inputs */
@@ -72,14 +76,20 @@ body {
     box-sizing: border-box; /* includes padding in width */
     font: inherit;          /* keeps consistent font style */
   }
+
+  form label {
+    justify-self: start; /* aligns labels to the left */
+  }
   
   form button {
     grid-column: 1 / -1; /* makes button span both columns */
-    padding: 0.5em 1em;
+    padding: 1em 1em;
     cursor: pointer;
     font: inherit;
   }
 
+
+/* PROJECTS */
 .projects {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(15em, 1fr));
@@ -116,6 +126,8 @@ h1, h2, h3, h4, h5, h6 {
   margin-bottom: 0.5em;     /* space below each project title */
 }
 
+
+/* RESUME */
 /* ===== Headings ===== */
 h1 {
   font-size: 3em;
