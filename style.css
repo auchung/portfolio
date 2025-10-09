@@ -29,7 +29,13 @@ main.home {
     margin: 0 auto;
     max-width: 800px; /* keeps it readable */
   }
-
+  
+  .home img {
+    max-width: 100%;   /* image will never exceed the container width */
+    height: auto;      /* keeps the aspect ratio */
+    display: block;    /* removes extra space below image */
+    margin: 1em auto;  /* optional: centers the image with spacing */
+}
 
 /* NAV LINKS */
   nav ul,
