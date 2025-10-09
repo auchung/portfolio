@@ -106,6 +106,10 @@ body {
   gap: 1em;                     /* spacing between heading, image, and paragraph */
 }
 
+.projects article h2 {
+  margin: 0;                    /* remove extra spacing from headings */
+}
+
 h1, h2, h3, h4, h5, h6 {
   line-height: 1.1;        /* tighter line spacing than body text */
   text-wrap: balance;       /* balances text across lines nicely */
