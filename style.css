@@ -71,10 +71,11 @@ body {
   
   form input,
   form textarea {
-    padding: 1em;
-    width: auto;           /* makes inputs fill the column */
-    box-sizing: border-box; /* includes padding in width */
-    font: inherit;          /* keeps consistent font style */
+    padding: 0.5em;
+    width: 100%;
+    max-width: 400px; /* ✅ makes boxes thinner */
+    box-sizing: border-box;
+    font: inherit;        /* keeps consistent font style */
   }
 
   form label {
