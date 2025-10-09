@@ -18,6 +18,19 @@ body {
   }
 
 
+/* HOME */
+body.home {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 80vh; /* centers vertically */
+    text-align: center; /* centers text */
+    margin: 0 auto;
+    max-width: 800px; /* keeps it readable */
+  }
+
+  
 /* NAV LINKS */
   nav ul,
   nav li {
