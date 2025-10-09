@@ -17,7 +17,7 @@ body {
     font: 100%/1.5 system-ui;
   }
 
-  
+
 /* NAV LINKS */
   nav ul,
   nav li {
@@ -61,7 +61,7 @@ body {
   form {
     display: grid;
     grid-template-columns: max-content 1fr; /* labels + inputs */
-    gap: 0.5em 1em; /* vertical + horizontal spacing */
+    gap: 1em 1em; /* vertical + horizontal spacing */
     align-items: center; /* align labels and inputs nicely */
   }
   
@@ -71,8 +71,8 @@ body {
   
   form input,
   form textarea {
-    padding: 0.5em;
-    width: 100%;           /* makes inputs fill the column */
+    padding: 1em;
+    width: auto;           /* makes inputs fill the column */
     box-sizing: border-box; /* includes padding in width */
     font: inherit;          /* keeps consistent font style */
   }
