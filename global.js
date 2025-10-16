@@ -34,6 +34,7 @@ for (let p of pages) {
     nav.append(a);
   }
   
+// Theme: Button
 document.body.insertAdjacentHTML(
     'afterbegin',
     `
@@ -48,24 +49,31 @@ document.body.insertAdjacentHTML(
     `
 );
 
-// Theme Format
+// Theme: Color Scheme
 const select = document.querySelector('.color-scheme select');
+
+const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+const automaticOption = select.querySelector('option[value="light dark"]');
+automaticOption.textContent = `Automatic (${prefersDark ? 'Dark' : 'Light'})`;
+
 function setColorScheme(value) {
   document.documentElement.style.setProperty('color-scheme', value);
   select.value = value;
 }
+
 if ("colorScheme" in localStorage) {
   setColorScheme(localStorage.colorScheme);
 } else {
   setColorScheme('light dark');
 }
-// Preference
 select.addEventListener('input', (event) => {
   const newScheme = event.target.value;
   setColorScheme(newScheme);
   localStorage.colorScheme = newScheme;
   console.log('Color scheme changed to:', newScheme);
 });
+
+
 
 // Resume: Contract and Expand
 const toggles = document.querySelectorAll('.toggle-btn');
