@@ -34,7 +34,40 @@ for (let p of pages) {
     nav.append(a);
   }
   
+document.body.insertAdjacentHTML(
+    'afterbegin',
+    `
+    <label class="color-scheme">
+      Theme:
+      <select id="theme-switch">
+        <option value="light dark">Automatic</option>
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+      </select>
+    </label>
+    `
+);
 
+// Theme Format
+const select = document.querySelector('.color-scheme select');
+function setColorScheme(value) {
+  document.documentElement.style.setProperty('color-scheme', value);
+  select.value = value;
+}
+if ("colorScheme" in localStorage) {
+  setColorScheme(localStorage.colorScheme);
+} else {
+  setColorScheme('light dark');
+}
+// Preference
+select.addEventListener('input', (event) => {
+  const newScheme = event.target.value;
+  setColorScheme(newScheme);
+  localStorage.colorScheme = newScheme;
+  console.log('Color scheme changed to:', newScheme);
+});
+
+// Resume: Contract and Expand
 const toggles = document.querySelectorAll('.toggle-btn');
     toggles.forEach(btn => {
       btn.addEventListener('click', () => {
@@ -43,3 +76,20 @@ const toggles = document.querySelectorAll('.toggle-btn');
         btn.classList.toggle('rotate');
       });
     });
+
+
+// Contact
+const form = document.querySelector('form');
+form?.addEventListener('submit', (event) => {
+  event.preventDefault(); 
+  const data = new FormData(form);
+  let url = form.action + "?";
+  const params = [];
+
+  for (let [name, value] of data) {
+    params.push(`${name}=${encodeURIComponent(value)}`);
+  }
+  url += params.join("&"); 
+  location.href = url;
+  form.reset();
+});

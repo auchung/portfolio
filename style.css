@@ -3,6 +3,7 @@
 }
 
 html {
+  color-scheme: light dark;
   accent-color: var(--color-accent);
 }
 
@@ -12,7 +13,7 @@ body {
        */
     font: 100%/1.5 system-ui;
     max-width: 80ch;
-    margin-inline: auto; /* centers the content */
+    margin-inline: auto; 
     padding: 2em;
     font: 100%/1.5 system-ui;
   }
@@ -24,31 +25,32 @@ main.home {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    min-height: 80vh; /* centers vertically */
-    text-align: center; /* centers text */
+    min-height: 80vh; 
+    text-align: center; 
     margin: 0 auto;
-    max-width: 800px; /* keeps it readable */
+    max-width: 800px; 
   }
   
   .home img {
-    max-width: 100%;   /* image will never exceed the container width */
-    height: auto;      /* keeps the aspect ratio */
-    display: block;    /* removes extra space below image */
-    margin: 1em auto;  /* optional: centers the image with spacing */
+    max-width: 100%; 
+    height: auto;    
+    display: block;    
+    margin: 1em auto; 
 }
 
 /* NAV LINKS */
   nav ul,
   nav li {
-    display: contents; /* ignore the default list styling */
-    margin: 0;         /* optional: remove any margin just in case */
-    padding: 0;        /* optional: remove default padding */
+    display: contents;
+    margin: 0;         
+    padding: 0;        
   }
 
   nav {
-    display: flex;                         /* Flexbox for horizontal layout */
-    margin-bottom: 1em;                    /* space below nav */
-    border-bottom: 1px solid oklch(80% 3% 200); /* subtle gray bottom border */
+    display: flex;                         
+    margin-bottom: 1em;                    
+    border-bottom: 1px solid oklch(80% 3% 200); 
+    --border-color: oklch(50% 10% 200 / 40%);
   }
 
   nav a {
@@ -68,24 +70,40 @@ main.home {
   
   nav a:hover {
     border-bottom-color: var(--color-accent);
-    background-color: oklch(from var(--color-accent)95% 5% h);    /* hover effect */
+    background-color: color-mix(in oklch, var(--color-accent), canvas 85%);
   }
 
   input, textarea, button {
-    font: inherit;  /* makes form controls use the same font as the page */
+    font: inherit; 
   }
 
+/* THEME BUTTON */
+  .color-scheme {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    font-size: 80%;
+    font-family: inherit; 
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+  }
+  
+  .color-scheme select {
+    font-family: inherit;
+    font-size: 100%;
+  }
 
   /* CONTACT FORM */
   form {
     display: grid;
-    grid-template-columns: max-content 1fr; /* labels + inputs */
-    gap: 1em 1em; /* vertical + horizontal spacing */
-    align-items: center; /* align labels and inputs nicely */
+    grid-template-columns: max-content 1fr; 
+    gap: 1em 1em;
+    align-items: center; 
   }
   
   form label {
-    justify-self: end; /* aligns labels to the right side */
+    justify-self: end;
   }
   
   form input,
@@ -94,15 +112,15 @@ main.home {
     width: 100%;
     max-height: fit-content;
     box-sizing: border-box;
-    font: inherit;        /* keeps consistent font style */
+    font: inherit;        
   }
 
   form label {
-    justify-self: start; /* aligns labels to the left */
+    justify-self: start; 
   }
   
   form button {
-    grid-column: 1 / -1; /* makes button span both columns */
+    grid-column: 1 / -1; 
     padding: 1em 1em;
     cursor: pointer;
     font: inherit;
@@ -113,37 +131,37 @@ main.home {
 .projects {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(15em, 1fr));
-  grid-auto-rows: auto; /* so subgrid has rows to inherit */
-  gap: 1.5em; /* spacing between articles */
-  margin-top: 2em; /* space from heading */
+  grid-auto-rows: auto;
+  gap: 1.5em; 
+  margin-top: 2em; 
 }
 
 .projects article {
   display: grid;
-  grid-template-rows: subgrid; /* inherit row sizing from parent grid */
-  grid-row: span 3;            /* span 3 rows */
-  gap: 1em;                     /* spacing between heading, image, and paragraph */
+  grid-template-rows: subgrid; 
+  grid-row: span 3;        
+  gap: 1em;                    
 }
 
 .projects article h2 {
-  margin: 0;                    /* remove extra spacing from headings */
+  margin: 0;                 
 }
 
 h1, h2, h3, h4, h5, h6 {
-  line-height: 1.1;        /* tighter line spacing than body text */
-  text-wrap: balance;       /* balances text across lines nicely */
-  margin: 0;                /* remove default margins for more control */
+  line-height: 1.1;        
+  text-wrap: balance;      
+  margin: 0;              
 }
 
 /* Specific styling for the main page title */
 .projects h1 {
-  font-size: 4em;           /* makes the main heading much larger than h2 */
-  margin-bottom: 0.5em;     /* space below the heading */
+  font-size: 4em;        
+  margin-bottom: 0.5em; 
 }
 
 /* Project article headings */
 .projects h2 {
-  font-size: 1.5em;         /* smaller than h1 but still prominent */
+  font-size: 1.5em;        
 }
 
 
@@ -179,7 +197,7 @@ h4 {
 /* ===== Sections & Articles ===== */
 section {
   margin-bottom: 2em;
-  max-width: 100%;       /* ensures sections fit inside the body */
+  max-width: 100%;
 }
 
 article {
