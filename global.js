@@ -101,3 +101,50 @@ form?.addEventListener('submit', (event) => {
   location.href = url;
   form.reset();
 });
+
+
+export async function fetchJSON(url) {
+  try {
+    // Fetch the JSON file from the given URL
+    const response = await fetch(url);
+    if (!response.ok) {
+      throw new Error(`Failed to fetch projects: ${response.statusText}`);
+    }
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error('Error fetching or parsing JSON data:', error);
+  }
+}
+
+export function renderProjects(projects, containerElement, headingLevel = 'h2') {
+  // 1️⃣ Clear any existing content
+  containerElement.innerHTML = '';
+
+  // 2️⃣ Loop through each project object
+  for (let project of projects) {
+    // 3️⃣ Create an article element for each project
+    const article = document.createElement('article');
+
+    // 4️⃣ Create the dynamic heading
+    const heading = document.createElement(headingLevel);
+    heading.textContent = project.title;
+
+    // 5️⃣ Create and set up the image
+    const img = document.createElement('img');
+    img.src = project.image;
+    img.alt = project.title || 'Project image';
+
+    // 6️⃣ Create the description paragraph
+    const p = document.createElement('p');
+    p.textContent = project.description;
+
+    // 7️⃣ Append all the elements to the article
+    article.appendChild(heading);
+    article.appendChild(img);
+    article.appendChild(p);
+
+    // 8️⃣ Append the article to the container
+    containerElement.appendChild(article);
+  }
+}
