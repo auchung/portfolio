@@ -130,6 +130,13 @@ export function renderProjects(projects, containerElement, headingLevel = 'h2') 
     const heading = document.createElement(headingLevel);
     heading.textContent = project.title;
 
+    const year = document.createElement('span');
+    year.classList.add('year');
+    year.textContent = ` (${project.year})`;
+
+    // Attach the year to the heading
+    heading.appendChild(year);
+
     // 5️⃣ Create and set up the image
     const img = document.createElement('img');
     img.src = project.image;
