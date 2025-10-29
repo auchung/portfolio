@@ -130,28 +130,34 @@ export function renderProjects(projects, containerElement, headingLevel = 'h2') 
     const heading = document.createElement(headingLevel);
     heading.textContent = project.title;
 
-    const year = document.createElement('span');
-    year.classList.add('year');
-    year.textContent = ` (${project.year})`;
-
-    // Attach the year to the heading
-    heading.appendChild(year);
-
     // 5️⃣ Create and set up the image
     const img = document.createElement('img');
     img.src = project.image;
     img.alt = project.title || 'Project image';
 
-    // 6️⃣ Create the description paragraph
+    // 6️⃣ Create a div to hold the description and year
+    const infoDiv = document.createElement('div');
+    infoDiv.classList.add('project-info');
+
+    // 7️⃣ Create the description paragraph
     const p = document.createElement('p');
     p.textContent = project.description;
 
-    // 7️⃣ Append all the elements to the article
+    // 8️⃣ Create the year element
+    const year = document.createElement('p');
+    year.classList.add('project-year');
+    year.textContent = `c. ${project.year}`;
+
+    // 9️⃣ Append description and year to the info div
+    infoDiv.appendChild(p);
+    infoDiv.appendChild(year);
+
+    // 🔟 Append all the elements to the article
     article.appendChild(heading);
     article.appendChild(img);
-    article.appendChild(p);
+    article.appendChild(infoDiv);
 
-    // 8️⃣ Append the article to the container
+    // 1️⃣1️⃣ Append the article to the container
     containerElement.appendChild(article);
   }
 }
@@ -159,3 +165,4 @@ export function renderProjects(projects, containerElement, headingLevel = 'h2') 
 export async function fetchGitHubData(username) {
     return await fetchJSON(`https://api.github.com/users/${username}`);
   }
+
