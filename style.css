@@ -374,15 +374,16 @@ path {
   border-radius: 16px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
   padding: 1.5rem 2rem;
-  width: 320px;
+  width: 60%;          /* take up 80% of the container width */
+  max-width: 800px;    /* but don’t exceed 800px */
   line-height: 1.6;
-  margin-bottom: 1.5rem;
+  margin: 0 auto 1.5rem auto; /* center horizontally with auto left/right */
 }
 
 #stats dl {
   display: grid;
   grid-template-columns: auto 1fr;
-  gap: 0.4rem 1rem;
+  gap: 0.4rem 2rem;    /* increase column spacing for more horizontal spread */
   font-size: 0.95rem;
 }
 
@@ -481,6 +482,7 @@ dl.info[hidden]:not(:hover, :focus-within) {
   color: #1e40af;
   margin-top: 1rem;
   margin-bottom: 0.5rem;
+  text-align: center;
 }
 
 /* ---- Language Breakdown ---- */
@@ -489,21 +491,40 @@ dl.info[hidden]:not(:hover, :focus-within) {
   border: 1px solid #e5e7eb;
   border-radius: 12px;
   padding: 1rem 1.5rem;
-  width: 320px;
+  width: fit-content;
+  max-width: 100%;
   font-size: 0.95rem;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+  margin: 0 auto;
   text-align: center;
+  display: grid;
+  grid-auto-flow: column; /* arrange items horizontally */
+  grid-template-rows: auto auto; /* first row = languages, second row = line counts */
+  gap: 0.5rem 1rem;
+  justify-content: center;
 }
 
 #language-breakdown dt {
-  font-weight: 600;
+  font-weight: 700;
   color: #111827;
-  margin-top: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  font-size: 0.9rem;
 }
 
 #language-breakdown dd {
-  color: #374151;
-  margin: 0;
-  margin-left: 0.5rem;
+  background: #e0e7ff;
+  color: #1e3a8a;
+  border-radius: 9999px;
+  padding: 0.3rem 0.8rem;
+  font-weight: 600;
+  margin: 0 auto;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  white-space: nowrap;
+  transition: transform 0.2s ease, background-color 0.2s ease;
 }
 
+#language-breakdown dd:hover {
+  background: #c7d2fe;
+  transform: scale(1.05);
+}
