@@ -220,12 +220,10 @@ async function loadData() {
   
   function isCommitSelected(selection, commit) {
     if (!selection) return false;
-  
     const [[x0, y0], [x1, y1]] = selection;
     const x = xScale(commit.datetime);
     const y = yScale(commit.hourFrac);
-  
-    return x0 <= x && x <= x1 && y0 <= y && y <= y1;
+    return x >= x0 && x <= x1 && y >= y0 && y <= y1;
   }
 
   function renderSelectionCount(selection) {
