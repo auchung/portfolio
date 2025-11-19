@@ -10,27 +10,59 @@
       <h1>Meta</h1>
       <p>This page includes stats about the code of this website.</p>
 
-      <h2>Summary</h2>
+      
+      <div id="time-filter" style="width: 100%; display: flex; flex-direction: column; gap: 0.3rem;">
+
+        <div style="display: flex; align-items: center; gap: 0.5rem;">
+          <label for="commit-progress" style="font-weight: 500;">Show commits until:</label>
+          <input
+            type="range"
+            id="commit-progress"
+            min="0"
+            max="100"
+            value="100"
+            style="flex: 1;"
+          />
+        </div>
+      
+        <time
+          id="commit-time"
+          style="display: block; text-align: right; font-size: 0.9rem;"
+        ></time>
+      
+      </div>
+
       <div id="stats"></div>
-
       <h2>Commits by time of day</h2>
-      <div id="chart"></div>  
-
-      <dl id="commit-tooltip" class="info tooltip" hidden>
-
-        <dt>Commit</dt>
-        <dd>
-          <a href="" id="commit-link" target="_blank"></a>
-        </dd>
+      <div id="scrolly-1">
+        <div id="scatter-story">
+        </div>
       
-        <dt>Date</dt>
-        <dd id="commit-date"></dd>
+        <div id="scatter-plot">
+          <div id="chart"></div>  
       
-        <!-- Add: Time, author, lines edited -->
-      </dl>
+          <dl id="commit-tooltip" class="info tooltip" hidden>
+            <dt>Commit</dt>
+            <dd><a href="" id="commit-link" target="_blank"></a></dd>
+            
+            <dt>Date</dt>
+            <dd id="commit-date"></dd>
+            <!-- Add: Time, author, lines edited -->
+          </dl>
+      
+        
+        </div>
+      </div>
+      <h2>Codebase Evolution</h2>
+      <!-- Unit visualization for files -->
+      <div id="files-scrolly">
+        <div id="files-story">
+        </div>
 
-      <p id="selection-count">No commits selected</p>
-        <dl id="language-breakdown" class="stats"></dl>
+      <dl id="files"></dl>
+    
+       
+        </div>
 
       <script type="module" src="../global.js"></script>
       <script type="module" src="./main.js"></script>

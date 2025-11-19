@@ -368,34 +368,45 @@ path {
   background-color: oklch(60% 45% 0) !important;
 }
 
-
 #stats {
   background: #ffffff;
   border-radius: 16px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
   padding: 1.5rem 2rem;
-  width: 60%;          /* take up 80% of the container width */
-  max-width: 800px;    /* but don’t exceed 800px */
+  width: 100%;          /* take up 80% of the container width */
+  max-width: 95%;    /* but don’t exceed 800px */
   line-height: 1.6;
   margin: 0 auto 1.5rem auto; /* center horizontally with auto left/right */
 }
 
 #stats dl {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  gap: 0.4rem 2rem;    /* increase column spacing for more horizontal spread */
-  font-size: 0.95rem;
+  display: flex;
+  gap: 2rem;              /* space between each stat */
+  justify-content: center; /* center horizontally */
+  flex-wrap: nowrap;       /* force one row */
+}
+
+#stats dt, #stats dd {
+  display: block;
+  text-align: center;
 }
 
 #stats dt {
   font-weight: 600;
   color: #374151;
+  margin-bottom: 0.25rem; /* space between label and number */
 }
 
 #stats dd {
   margin: 0;
-  text-align: right;
   color: #2563eb;
+}
+
+/* Wrap each dt/dd as a column using flex on the parent */
+#stats dl > * {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .gridlines line {
@@ -407,7 +418,9 @@ circle {
   transition: 200ms;
   transform-origin: center;
   transform-box: fill-box;
-}
+  transition: all 200ms, r calc(var(--r) * 100ms);
+  }
+
 
 circle:hover {
   transform: scale(1.5);
@@ -468,63 +481,104 @@ dl.info[hidden]:not(:hover, :focus-within) {
   }
 }
 
-.selection {
-  fill-opacity: 0.1;
-  stroke: black;
-  stroke-opacity: 0.7;
-  stroke-dasharray: 5 3;
-  animation: marching-ants 2s linear infinite;
-}
 
-#selection-count {
-  font-size: 1.1rem;
-  font-weight: 600;
-  color: #1e40af;
-  margin-top: 1rem;
-  margin-bottom: 0.5rem;
-  text-align: center;
-}
 
-/* ---- Language Breakdown ---- */
-#language-breakdown {
-  background: #f9fafb;
-  border: 1px solid #e5e7eb;
-  border-radius: 12px;
-  padding: 1rem 1.5rem;
-  width: fit-content;
-  max-width: 100%;
-  font-size: 0.95rem;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
-  margin: 0 auto;
-  text-align: center;
+#files {
   display: grid;
-  grid-auto-flow: column; /* arrange items horizontally */
-  grid-template-rows: auto auto; /* first row = languages, second row = line counts */
-  gap: 0.5rem 1rem;
-  justify-content: center;
+  grid-template-columns: 1fr 4fr;
+
+  > div {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: subgrid;
+  }
+
+  dt {
+    grid-column: 1;
+  }
+
+  dd {
+    grid-column: 2;
+  }
 }
 
-#language-breakdown dt {
-  font-weight: 700;
-  color: #111827;
-  text-transform: uppercase;
-  letter-spacing: 0.03em;
-  font-size: 0.9rem;
+.loc {
+  display: flex;
+  width: 0.5em;
+  aspect-ratio: 1;
+  background: steelblue;
+  border-radius: 50%;
 }
 
-#language-breakdown dd {
-  background: #e0e7ff;
-  color: #1e3a8a;
-  border-radius: 9999px;
-  padding: 0.3rem 0.8rem;
-  font-weight: 600;
-  margin: 0 auto;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
-  white-space: nowrap;
-  transition: transform 0.2s ease, background-color 0.2s ease;
+dd {
+  grid-column: 2;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: start;
+  align-content: start;
+  gap: 0.15em;
+  padding-top: 0.6em;
+  margin-left: 0;
 }
 
-#language-breakdown dd:hover {
-  background: #c7d2fe;
-  transform: scale(1.05);
+#scrolly-1 {
+  position: relative;
+  display: flex;
+  gap: 1rem;
+
+  > * {
+    flex: 1;
+  }
+  font-size: 14px;
 }
+
+#scatter-story {
+  position: relative;
+}
+
+#scatter-plot {
+  position: sticky;
+  top: 0;
+  left: 0;
+  bottom: auto;
+  height: 50vh;
+}
+
+/* --- SCROLLY LAYOUT FOR FILES --- */
+
+#files-scrolly {
+  position: relative;
+  display: flex;
+  gap: 1rem;
+  > * {
+    flex: 1;
+  }
+  font-size: 14px;
+}
+
+#files-story {
+  position: relative;
+}
+
+#scatter-plot {
+  position: sticky;
+  top: 0;
+  left: 0;
+  bottom: auto;
+  height: 50vh;
+}
+
+/* LEFT SIDE = story scrolls normally */
+#files-story {
+  flex: 1;
+  padding-bottom: 200vh; /* ensures enough scroll space */
+}
+
+/* RIGHT SIDE = files visualization stays fixed */
+#files {
+  flex: 1;
+  position: sticky;
+  top: 2rem;       /* adjust how far from top you want it */
+  height: fit-content;
+}
+
