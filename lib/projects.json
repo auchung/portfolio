@@ -2,8 +2,11 @@
     {
         "title": "Secret Sauce",
         "year": "2025",
-        "image": "https://vis-society.github.io/labs/2/images/empty.svg",
-        "description": "This project analyzes recipes from Food.com to uncover what factors make up the secret sauce to achieve high user ratings. By cleaning the data, engineering features, and building predictive models, we explore which recipe traits drive better reviews."
+        "image": "images/secretsauce.jpg",
+        "alt": "Secret Sauce recipe analysis visualization",
+        "description": "This project analyzes recipes from Food.com to uncover what factors make up the secret sauce to achieve high user ratings. By cleaning the data, engineering features, and building predictive models, we explore which recipe traits drive better reviews.",
+        "tags": ["Data Science", "Machine Learning", "Python", "Data Visualization"],
+        "url": ""
     },
     {
         "title": "Placeholder",

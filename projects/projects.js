@@ -1,7 +1,6 @@
 import { fetchJSON, renderProjects } from '../global.js';
 import * as d3 from 'https://cdn.jsdelivr.net/npm/d3@7.9.0/+esm';
 
-const projects = await fetchJSON('../lib/projects.json');
 const projectsContainer = document.querySelector('.projects');
 const titleElement = document.querySelector('.projects-title');
 const searchInput = document.querySelector('.searchBar');
@@ -11,10 +10,33 @@ const legend = d3.select('.legend');
 let searchQuery = '';
 let selectedIndex = -1;
 let currentPieData = [];
+let projects = [];
+const colors = d3.scaleOrdinal(d3.schemeTableau10);
 
-renderProjects(projects, projectsContainer, 'h2');
-if (titleElement) titleElement.textContent = `${projects.length} Projects`;
-renderPieChart(projects);
+// Show loading state
+if (projectsContainer) {
+  projectsContainer.innerHTML = '<p>Loading projects...</p>';
+}
+
+try {
+  projects = await fetchJSON('../lib/projects.json');
+  if (projects && projects.length > 0) {
+    renderProjects(projects, projectsContainer, 'h2');
+    if (titleElement) titleElement.textContent = `${projects.length} Projects`;
+    renderPieChart(projects);
+  } else {
+    if (projectsContainer) {
+      projectsContainer.innerHTML = '<p>No projects available at this time.</p>';
+    }
+    if (titleElement) titleElement.textContent = 'Projects';
+  }
+} catch (error) {
+  console.error('Error loading projects:', error);
+  if (projectsContainer) {
+    projectsContainer.innerHTML = '<p>Unable to load projects. Please try again later.</p>';
+  }
+  if (titleElement) titleElement.textContent = 'Projects';
+}
 
 function renderPieChart(projectsGiven) {
     // Clear previous chart & legend
@@ -41,9 +63,6 @@ function renderPieChart(projectsGiven) {
     let sliceGenerator = d3.pie().value(d => d.value);
     let arcData = sliceGenerator(data);
     let arcs = arcData.map(d => arcGenerator(d));
-
-    // Color scale
-    let colors = d3.scaleOrdinal(d3.schemeTableau10);
 
     // Draw arcs
     arcs.forEach((arc, i) => {

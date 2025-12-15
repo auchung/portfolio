@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Audrey Chung: Resume</title>
+  <title>Audrey Chung: Resume | Data Science Portfolio</title>
+  <meta name="description" content="Resume of Audrey Chung - Data Science student at UC San Diego with experience in machine learning, data analysis, and tutoring.">
   <link rel="stylesheet" href="../style.css">
   <style>
     section {
@@ -42,6 +43,15 @@
       font-size: 1.2em;
       cursor: pointer;
       transition: transform 0.2s;
+      padding: 0.25em;
+      min-width: 2em;
+      min-height: 2em;
+    }
+    
+    .toggle-btn:focus {
+      outline: 2px solid var(--color-accent, #2563eb);
+      outline-offset: 2px;
+      border-radius: 0.25em;
     }
 
     .toggle-btn.rotate {
@@ -55,8 +65,12 @@
   </style>
 </head>
 <body>
-
-  <h1>Resume</h1>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+  <main id="main-content">
+  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2em;">
+    <h1>Resume</h1>
+    <a href="mailto:auchung@ucsd.edu" style="padding: 0.5em 1em; background: var(--color-accent, #2563eb); color: white; border-radius: 0.25em; text-decoration: none; font-weight: 500;">Contact Me</a>
+  </div>
 
   <section>
     <header>
@@ -136,10 +150,35 @@
       <h2>Skills</h2>
     </header>
     <div class="content">
-      <p><strong>Technical Skills:</strong> Python (pandas, numpy, scikit-learn), SQL, Machine Learning, Data Visualization, Java, HTML, GitHub, Excel</p>
-      <p><strong>Languages:</strong> English (Native), Cantonese (Proficient), French (Basic)</p>
+      <div>
+        <h4 style="margin-bottom: 0.5em;">Technical Skills</h4>
+        <div class="skills">
+          <span>Python</span>
+          <span>pandas</span>
+          <span>numpy</span>
+          <span>scikit-learn</span>
+          <span>SQL</span>
+          <span>Machine Learning</span>
+          <span>Data Visualization</span>
+          <span>Java</span>
+          <span>HTML</span>
+          <span>CSS</span>
+          <span>GitHub</span>
+          <span>Excel</span>
+          <span>D3.js</span>
+        </div>
+      </div>
+      <div style="margin-top: 1.5em;">
+        <h4 style="margin-bottom: 0.5em;">Languages</h4>
+        <div class="skills">
+          <span>English (Native)</span>
+          <span>Cantonese (Proficient)</span>
+          <span>French (Basic)</span>
+        </div>
+      </div>
     </div>
   </section>
+  </main>
 
   <script type="module" src="../global.js"></script>
 

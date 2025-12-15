@@ -3,18 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Audrey Chung: Contact</title>
+    <title>Audrey Chung: Contact | Data Science Portfolio</title>
+    <meta name="description" content="Contact Audrey Chung for data science opportunities, internships, or collaborations.">
     <link rel="stylesheet" href="../style.css">
 </head>
 <body>
+      <a href="#main-content" class="skip-link">Skip to main content</a>
+      <main id="main-content">
       <h1>Contact Me</h1>
-      <form action="mailto:auchung@ucsd.edu" method="GET">
-        <label for="subject">Subject:</label>
-        <input name="subject">
-        <label for="body">Message:</label>
-        <textarea name="body"></textarea>
-        <button>Send</button>
-    </form>
+      <p style="margin-bottom: 2em;">I'm open to internships, research opportunities, and collaborations. Feel free to reach out!</p>
+      <form action="mailto:auchung@ucsd.edu" method="GET" id="contact-form">
+        <label for="subject">Subject: <span aria-label="required">*</span></label>
+        <input 
+          name="subject" 
+          id="subject" 
+          type="text" 
+          required 
+          aria-required="true"
+          placeholder="e.g., Internship Inquiry"
+        >
+        <label for="body">Message: <span aria-label="required">*</span></label>
+        <textarea 
+          name="body" 
+          id="body" 
+          rows="6" 
+          required 
+          aria-required="true"
+          placeholder="Tell me about yourself and what you'd like to discuss..."
+        ></textarea>
+        <button type="submit">Send Email</button>
+      </form>
+      
+      <div style="margin-top: 2em; padding: 1em; background: color-mix(in oklch, var(--color-accent), canvas 95%); border-radius: 0.5em;">
+        <h3 style="margin-top: 0;">Other Ways to Reach Me</h3>
+        <ul style="list-style: none; padding: 0;">
+          <li style="margin-bottom: 0.5em;">
+            <strong>Email:</strong> <a href="mailto:auchung@ucsd.edu">auchung@ucsd.edu</a>
+          </li>
+          <li style="margin-bottom: 0.5em;">
+            <strong>GitHub:</strong> <a href="https://github.com/auchung" target="_blank" rel="noopener noreferrer">github.com/auchung</a>
+          </li>
+        </ul>
+      </div>
+      </main>
     <script type="module" src="../global.js"></script>
 </body>
 </html>

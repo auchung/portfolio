@@ -3,21 +3,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Audrey Chung: Personal site and portfolio</title>
+    <title>Audrey Chung | Data Scientist & Portfolio</title>
+    <meta name="description" content="Data Science student at UC San Diego specializing in machine learning, data visualization, and turning complex data into actionable insights. Explore my projects and resume.">
+    <meta name="keywords" content="Audrey Chung, Data Science, UCSD, Machine Learning, Data Visualization, Portfolio, Python, Data Analysis">
+    <meta name="author" content="Audrey Chung">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Audrey Chung | Data Scientist & Portfolio">
+    <meta property="og:description" content="Data Science student at UC San Diego specializing in machine learning, data visualization, and turning complex data into actionable insights.">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:title" content="Audrey Chung | Data Scientist & Portfolio">
+    <meta property="twitter:description" content="Data Science student at UC San Diego specializing in machine learning, data visualization, and turning complex data into actionable insights.">
+    
     <link rel="stylesheet" href="style.css">
+    
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Audrey Chung",
+      "jobTitle": "Data Science Student",
+      "affiliation": {
+        "@type": "EducationalOrganization",
+        "name": "University of California, San Diego",
+        "department": "Halıcıoğlu Data Science Institute"
+      },
+      "alumniOf": "University of California, San Diego",
+      "url": "https://auchung.github.io/portfolio",
+      "sameAs": [
+        "https://github.com/auchung"
+      ]
+    }
+    </script>
 </head>
 <body>
-  <main class="home">
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+  <main class="home" id="main-content">
   <h1>Audrey Chung</h1>
-  <p>Hi, I’m  a Data Science major with a Cognitive Science minor at UCSD. I’m passionate about uncovering insights from data and using them to solve real-world problems. Beyond analyzing numbers, I love building creative projects, exploring patterns in human behavior, and turning complex ideas into something understandable and actionable.</p>
-  <img src="images/cateyes.jpg" alt="black cat with grey eyes zoomed in">
+  <p class="intro">I'm a Data Science major with a Cognitive Science minor at UC San Diego. I'm passionate about uncovering insights from data and using them to solve real-world problems. Beyond analyzing numbers, I love building creative projects, exploring patterns in human behavior, and turning complex ideas into something understandable and actionable.</p>
+  <img src="images/cateyes.jpg" alt="Black cat with grey eyes - a personal touch to my portfolio" loading="lazy">
   </main>
-  <h2>Latest Projects</h2>
-    <div class="projects">
+  <section aria-labelledby="projects-heading">
+    <h2 id="projects-heading">Latest Projects</h2>
+    <div class="projects" role="list">
     <!-- Dynamically added content will appear here -->
     </div>
+  </section>
 
-  <section id="github-section">
+  <section id="github-section" aria-labelledby="github-heading">
       <div id="profile-stats">
         <!-- GitHub data will appear here -->
       </div>

@@ -14,6 +14,8 @@ let pages = [
   ];
 
 let nav = document.createElement('nav');
+nav.setAttribute('role', 'navigation');
+nav.setAttribute('aria-label', 'Main navigation');
 document.body.prepend(nav);
 const BASE_PATH = (location.hostname === "localhost" || location.hostname === "127.0.0.1")
   ? "/"                  // Local server
@@ -25,12 +27,15 @@ for (let p of pages) {
     let a = document.createElement('a');
     a.href = url;
     a.textContent = title;
+    a.setAttribute('aria-label', `Navigate to ${title} page`);
     a.classList.toggle(
         'current',
         a.host === location.host && a.pathname === location.pathname
       );
       if (a.host !== location.host) {
         a.target = "_blank";
+        a.setAttribute('rel', 'noopener noreferrer');
+        a.setAttribute('aria-label', `${title} (opens in new tab)`);
       }
     nav.append(a);
   }
@@ -79,11 +84,39 @@ select.addEventListener('input', (event) => {
 // Resume: Contract and Expand
 const toggles = document.querySelectorAll('.toggle-btn');
     toggles.forEach(btn => {
+      const section = btn.closest('section');
+      const content = section.querySelector('.content');
+      const header = section.querySelector('header');
+      const heading = section.querySelector('h2');
+      
+      // Set initial ARIA attributes
+      if (content && heading) {
+        const sectionId = `section-${Math.random().toString(36).substr(2, 9)}`;
+        content.id = sectionId;
+        btn.setAttribute('aria-expanded', 'false');
+        btn.setAttribute('aria-controls', sectionId);
+        btn.setAttribute('aria-label', `Toggle ${heading.textContent} section`);
+      }
+      
       btn.addEventListener('click', () => {
-        const content = btn.parentElement.nextElementSibling;
+        const isExpanded = content.classList.contains('show');
         content.classList.toggle('show');
         btn.classList.toggle('rotate');
+        btn.setAttribute('aria-expanded', !isExpanded);
       });
+      
+      // Allow keyboard activation on header
+      if (header) {
+        header.setAttribute('role', 'button');
+        header.setAttribute('tabindex', '0');
+        header.addEventListener('click', () => btn.click());
+        header.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            btn.click();
+          }
+        });
+      }
     });
 
 
@@ -109,12 +142,13 @@ export async function fetchJSON(url) {
     // Fetch the JSON file from the given URL
     const response = await fetch(url);
     if (!response.ok) {
-      throw new Error(`Failed to fetch projects: ${response.statusText}`);
+      throw new Error(`Failed to fetch: ${response.statusText}`);
     }
     const data = await response.json();
     return data;
   } catch (error) {
     console.error('Error fetching or parsing JSON data:', error);
+    return null;
   }
 }
 
@@ -126,17 +160,45 @@ export function renderProjects(projects, containerElement, headingLevel = 'h2') 
   for (let project of projects) {
     // 3️⃣ Create an article element for each project
     const article = document.createElement('article');
+    article.setAttribute('role', 'listitem');
 
-    // 4️⃣ Create the dynamic heading
+    // 4️⃣ Create the dynamic heading (make it a link if url exists)
     const heading = document.createElement(headingLevel);
-    heading.textContent = project.title;
+    if (project.url) {
+      const link = document.createElement('a');
+      link.href = project.url;
+      link.textContent = project.title;
+      link.setAttribute('aria-label', `View ${project.title} project`);
+      if (project.url.startsWith('http')) {
+        link.target = '_blank';
+        link.rel = 'noopener noreferrer';
+      }
+      heading.appendChild(link);
+    } else {
+      heading.textContent = project.title;
+    }
 
-    // 5️⃣ Create and set up the image
+    // 5️⃣ Create and set up the image (make it a link if url exists)
+    let imgContainer;
+    if (project.url) {
+      imgContainer = document.createElement('a');
+      imgContainer.href = project.url;
+      imgContainer.setAttribute('aria-label', `View ${project.title} project`);
+      if (project.url.startsWith('http')) {
+        imgContainer.target = '_blank';
+        imgContainer.rel = 'noopener noreferrer';
+      }
+    } else {
+      imgContainer = document.createElement('div');
+    }
+    
     const img = document.createElement('img');
     img.src = project.image;
-    img.alt = project.title || 'Project image';
+    img.alt = project.alt || `${project.title} project image`;
+    img.loading = 'lazy';
+    imgContainer.appendChild(img);
 
-    // 6️⃣ Create a div to hold the description and year
+    // 6️⃣ Create a div to hold the description, year, and tags
     const infoDiv = document.createElement('div');
     infoDiv.classList.add('project-info');
 
@@ -153,12 +215,25 @@ export function renderProjects(projects, containerElement, headingLevel = 'h2') 
     infoDiv.appendChild(p);
     infoDiv.appendChild(year);
 
-    // 🔟 Append all the elements to the article
+    // 🔟 Add tags if they exist
+    if (project.tags && Array.isArray(project.tags) && project.tags.length > 0) {
+      const tagsDiv = document.createElement('div');
+      tagsDiv.classList.add('project-tags');
+      project.tags.forEach(tag => {
+        const tagSpan = document.createElement('span');
+        tagSpan.classList.add('tag');
+        tagSpan.textContent = tag;
+        tagsDiv.appendChild(tagSpan);
+      });
+      infoDiv.appendChild(tagsDiv);
+    }
+
+    // 1️⃣1️⃣ Append all the elements to the article
     article.appendChild(heading);
-    article.appendChild(img);
+    article.appendChild(imgContainer);
     article.appendChild(infoDiv);
 
-    // 1️⃣1️⃣ Append the article to the container
+    // 1️⃣2️⃣ Append the article to the container
     containerElement.appendChild(article);
   }
 }
