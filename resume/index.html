@@ -8,28 +8,41 @@
   <link rel="stylesheet" href="../style.css">
   <style>
     section {
-      border-bottom: 1px solid #ddd;
-      margin-bottom: 1em;
-      padding-bottom: 1em;
+      border-bottom: 1px solid var(--color-border, #2d3441);
+      margin-bottom: 1.5em;
+      padding-bottom: 1.5em;
+      background-color: var(--color-bg-secondary, #1a1f2e);
+      border-radius: 12px;
+      padding: 1.5em;
+      border: 1px solid var(--color-border, #2d3441);
     }
 
     header {
       display: flex;
       align-items: center;
-      gap: 0.5em; /* space between toggle and title */
+      gap: 0.5em;
       cursor: pointer;
+      padding: 0.5em;
+      border-radius: 8px;
+      transition: background-color 0.2s ease;
+    }
+    
+    header:hover {
+      background-color: var(--color-bg-tertiary, #252b3b);
     }
 
     header h2 {
       margin: 0;
-      flex-grow: 1; /* allows title to fill space */
+      flex-grow: 1;
+      color: var(--color-text-primary, #e8eaed);
     }
 
     .content {
       display: none;
-      margin-top: 0.5em;
-      padding-left: 1.5em; /* indentation for expanded content */
-      border-left: 3px solid oklch(80% 3% 200);
+      margin-top: 1em;
+      padding-left: 1.5em;
+      border-left: 3px solid var(--color-accent, #5b9bd5);
+      padding-top: 1em;
     }
 
     .content.show {
@@ -48,8 +61,12 @@
       min-height: 2em;
     }
     
+    .toggle-btn {
+      color: var(--color-text-primary, #e8eaed);
+    }
+    
     .toggle-btn:focus {
-      outline: 2px solid var(--color-accent, #2563eb);
+      outline: 2px solid var(--color-accent, #5b9bd5);
       outline-offset: 2px;
       border-radius: 0.25em;
     }
@@ -67,9 +84,9 @@
 <body>
   <a href="#main-content" class="skip-link">Skip to main content</a>
   <main id="main-content">
-  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2em;">
+  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2em; flex-wrap: wrap; gap: 1em;">
     <h1>Resume</h1>
-    <a href="mailto:auchung@ucsd.edu" style="padding: 0.5em 1em; background: var(--color-accent, #2563eb); color: white; border-radius: 0.25em; text-decoration: none; font-weight: 500;">Contact Me</a>
+    <a href="mailto:auchung@ucsd.edu" style="padding: 0.75em 1.5em; background: linear-gradient(135deg, var(--color-accent, #5b9bd5) 0%, var(--color-accent-hover, #7bb3e0) 100%); color: var(--color-bg-primary, #0f1419); border-radius: 8px; text-decoration: none; font-weight: 600; transition: transform 0.2s ease, box-shadow 0.2s ease; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);">Contact Me</a>
   </div>
 
   <section>

@@ -70,7 +70,7 @@ function setColorScheme(value) {
 if ("colorScheme" in localStorage) {
   setColorScheme(localStorage.colorScheme);
 } else {
-  setColorScheme('light dark');
+  setColorScheme('dark'); // Default to dark theme
 }
 select.addEventListener('input', (event) => {
   const newScheme = event.target.value;
